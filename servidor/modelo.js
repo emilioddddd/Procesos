@@ -15,7 +15,7 @@ function Sistema() {
     }
 
     this.eliminarUsuario = function(nick){
-        res = {"eliminado":false}
+        let res = {"eliminado":false}
         if(this.usuarios[nick]){
             delete this.usuarios[nick]
             res = {"eliminado":true}
@@ -47,3 +47,6 @@ function Sistema() {
 function Usuario(nick) {
     this.nick = nick;
 } 
+
+// Exportar el nombre de la capa Rest
+module.exports.Sistema = Sistema;

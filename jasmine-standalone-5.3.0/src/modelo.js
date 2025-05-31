@@ -1,16 +1,21 @@
-function Sistema(){ 
-    this.usuarios={}; 
-    this.agregarUsuario=function(nick){ 
-        this.usuarios[nick]=new Usuario(nick); 
-        //this.usuarios[nick].activo=true;
-    } 
+function Sistema() {
+    this.usuarios = {};
 
-    this.obtenerUsuarios=function(){ 
-        return this.usuarios; 
-    } 
+    //Coleccion de funciones que permiten gestionar los usuarios
+    this.agregarUsuario = function(nick){
+        let res={"nick":-1};
+        if (!this.usuarios[nick]){
+            this.usuarios[nick]=new Usuario(nick);
+            res.nick=nick;
+        }
+        else{
+            console.log("el nick "+nick+" está en uso"); 
+        }
+        return res;
+    }
 
     this.eliminarUsuario = function(nick){
-        res = {"eliminado":false}
+        let res = {"eliminado":false}
         if(this.usuarios[nick]){
             delete this.usuarios[nick]
             res = {"eliminado":true}
@@ -38,8 +43,10 @@ function Sistema(){
         let res = {"num":Object.keys(this.usuarios).length};
         return res
     }
-} 
-function Usuario(nick){ 
-    this.nick=nick; 
 }
+function Usuario(nick) {
+    this.nick = nick;
+} 
 
+// Exportar el nombre de la capa Rest
+module.exports.Sistema = Sistema;

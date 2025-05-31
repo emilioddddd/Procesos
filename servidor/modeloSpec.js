@@ -1,8 +1,8 @@
-
-describe('El sistema', function() { 
+const modelo = require('./modelo.js');
+describe('El sistema ...', function() { 
   let sistema; 
   beforeEach(function() { 
-    sistema=new Sistema(); 
+    sistema=new modelo.Sistema(); 
   }); 
 
   it('inicialmente no hay usuarios', function() { 
